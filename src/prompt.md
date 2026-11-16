@@ -1,0 +1,5 @@
+Write a complete Java class named FlightViewer with a main method. First, prompt the user for the MySQL root password using a Scanner, and connect to the FlightDB database using try-with-resources (URL: "jdbc:mysql://localhost:3306/FlightDB?allowLoadLocalInfile=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Jerusalem&useSSL=false", user: "root"). Next, prompt the user to enter a target Terminal number (valid terminals are 2, 3, 4, 5).
+
+Use a secure PreparedStatement with a '?' placeholder to execute a SELECT query that performs an INNER JOIN between the Arrivals (alias 'a') and FlightRoutes (alias 'r') tables. Filter the query using "WHERE a.terminal = ?" and sort the results using "ORDER BY a.scheduled ASC".
+
+Crucially, bind the terminal parameter using pstmt.setString(1, terminal) since the terminal column in the database is defined as a VARCHAR(10). Finally, execute the query and iterate through the ResultSet to print the joined flight details in a cleanly formatted table to the console.
